@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mysql:
-    image: mysql:8.0
+    image: mysql:5.7
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root_password
@@ -14,7 +14,7 @@ services:
     networks:
       - app_network
     ports:
-      - "3307:3307"
+      - "3306:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
