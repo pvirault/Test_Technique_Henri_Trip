@@ -55,10 +55,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'name' => 'nullable|string',
-            'email' => 'nullable|email',
-            'password' => 'nullable|string|min:8',
-            'role' => 'nullable|in:user,admin',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8',
+            'role' => 'required|in:user,admin',
         ]);
 
         $user = $this->userService->updateUser($id, $validated);
