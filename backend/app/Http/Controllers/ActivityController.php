@@ -39,9 +39,14 @@ class ActivityController extends Controller
     public function store(Request $request, $guideId)
     {
         $validated = $request->validate([
-            'name' => 'required|string',
+            'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'duration' => 'required|integer',
+            'category' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'opening_hours' => 'required|string|max:255',
+            'website' => 'required|url|max:255',
+            'order' => 'required|integer',
         ]);
 
         $activity = $this->activityService->createActivityForGuide($guideId, $validated);
@@ -54,9 +59,14 @@ class ActivityController extends Controller
     public function update(Request $request, $guideId, $activityId)
     {
         $validated = $request->validate([
-            'name' => 'nullable|string',
-            'description' => 'nullable|string',
-            'duration' => 'nullable|integer',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'opening_hours' => 'required|string|max:255',
+            'website' => 'required|url|max:255',
+            'order' => 'required|integer',
         ]);
 
         $activity = $this->activityService->updateActivity($guideId, $activityId, $validated);

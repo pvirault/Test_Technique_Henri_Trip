@@ -55,10 +55,10 @@ class GuideController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'title' => 'nullable|string',
-            'description' => 'nullable|string',
-            'days_count' => 'nullable|integer',
-            'options' => 'nullable|json',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'days_count' => 'required|integer',
+            'options' => 'required|json',
         ]);
 
         $guide = $this->guideService->updateGuide($id, $validated);
