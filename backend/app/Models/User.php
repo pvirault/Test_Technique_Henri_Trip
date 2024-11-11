@@ -160,4 +160,14 @@ class User extends Authenticatable
     {
         return $this->isAdmin();
     }
+
+    /**
+     * Get the guides created by the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function guides()
+    {
+        return $this->hasMany(Guide::class, 'created_by');
+    }
 }

@@ -18,7 +18,18 @@ class Guide extends Model
         'description',    // A description of the guide
         'days_count',     // Number of days for the guide
         'options',        // Options like mobility, season, target audience, etc.
+        'created_by',
     ];
+
+    /**
+     * Get the user that created the guide.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 
     /**
      * Get the activities associated with the guide.
