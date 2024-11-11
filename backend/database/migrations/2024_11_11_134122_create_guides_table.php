@@ -19,7 +19,7 @@ class CreateGuidesTable extends Migration
             $table->text('description');
             $table->integer('days_count');
             $table->json('options');
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
