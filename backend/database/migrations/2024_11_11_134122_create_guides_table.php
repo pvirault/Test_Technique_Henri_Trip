@@ -15,7 +15,7 @@ class CreateGuidesTable extends Migration
     {
         Schema::create('guides', function (Blueprint $table) {
             $table->id();
-            $table->string('titre');
+            $table->string('title');
             $table->text('description');
             $table->integer('days_count');
             $table->json('options');
