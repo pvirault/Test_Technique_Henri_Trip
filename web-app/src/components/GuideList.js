@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const GuideList = () => {
@@ -7,12 +6,15 @@ const GuideList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('/api/guides')
-            .then(response => {
-                setGuides(response.data);
+        fetchGuides()
+            .then(data => {
+                setGuides(data);
                 setLoading(false);
             })
-            .catch(error => console.error("Erreur de chargement des guides", error));
+            .catch(error => {
+                console.error("Erreur lors du chargement des guides", error);
+                setLoading(false);
+            });
     }, []);
 
     if (loading) return <p>Chargement...</p>;
@@ -23,7 +25,8 @@ const GuideList = () => {
             <ul>
                 {guides.map(guide => (
                     <li key={guide.id}>
-                        <Link to={`/guides/${guide.id}`}>{guide.title}</Link>
+                        {/* <Link to={`/guides/${guide.id}`}>{guide.title}</Link> */}
+                        <p>{guide.title}</p>
                     </li>
                 ))}
             </ul>
