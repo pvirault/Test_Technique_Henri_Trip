@@ -1,21 +1,21 @@
 # Test Technique - Henri Trip
 
-## Contexte 
+# Contexte 
 
 Ce test technique est composé de deux exercices : un exercice pour la partie Frontend et un autre pour la partie Backend.
 
-# Exercice 1 : Test Frontend
+## Exercice 1 : Test Frontend
 
 Les utilisateurs ont besoin de consulter et d'interagir avec les guides qu'ils ont créés ou auxquels ils ont été invités. Ce projet consiste en la création d'une web app en React qui permettra aux utilisateurs de visualiser et de naviguer à travers ces guides.
 
-## Objectifs
+### Objectifs
 
-1. Créer une interface utilisateur intuitive pour afficher et naviguer à travers les guides accessibles par l’utilisateur.
-2. Afficher une liste des guides, avec un accès aux détails de chaque guide, incluant les jours et les activités associées.
-3. Assurer une navigation fluide entre les différentes sections (jours, activités).
-4. Interagir avec notre API pour récupérer les données des guides.
+  - Créer une interface utilisateur intuitive pour afficher et naviguer à travers les guides accessibles par l’utilisateur.
+  - Afficher une liste des guides, avec un accès aux détails de chaque guide, incluant les jours et les activités associées.
+  - Assurer une navigation fluide entre les différentes sections (jours, activités).
+  - Interagir avec notre API pour récupérer les données des guides.
 
-## Architecture et Organisation des Composants
+### Architecture et Organisation des Composants
 
 - **`App.js`** : Point d’entrée de l’application pour définir le routage global.
 - **Composants principaux** :
@@ -26,21 +26,22 @@ Les utilisateurs ont besoin de consulter et d'interagir avec les guides qu'ils o
 - Utilisation de **React Router** pour gérer la navigation entre les composants.
 - Utilisation de **Axios** pour consommer l'API.
 
-## Structure des Données et Consommation de l’API
+### Structure des Données et Consommation de l’API
 
 - Prévoir des requêtes pour récupérer la liste des guides et les détails d'un guide avec les activités associées.
 - Gérer les erreurs et le chargement pour assurer une expérience utilisateur fluide.
 
-## Organisation du Code
+### Organisation du Code
 
 - **`src/components`** : Contient tous les composants réutilisables, tels que `GuideList`, `GuideDetail`, `DayView`, `ActivityView`.
 - **`src/services`** : Centralise les appels API avec Axios.
 - **`src/styles`** : Fichiers CSS pour styliser chaque composant de manière modulaire.
 
-## Structure du Projet
+### Structure du Projet
 
 Voici la structure du projet pour organiser efficacement cette application React en respectant les bonnes pratiques :
 
+```plaintext
 web-app/
 ├── public/
 │   ├── index.html             # Fichier HTML principal pour injecter l'application React
@@ -73,6 +74,7 @@ web-app/
 ├── .gitignore                 # Fichiers et dossiers à ignorer par Git
 ├── package.json               # Dépendances et scripts du projet
 └── README.md                  # Documentation du projet
+```
 
 ## Exercice 2 : Test Backend
 
@@ -137,8 +139,8 @@ L'API sera développée en **PHP** avec le framework **Laravel**.
 
 #### Méthodologie pour Structurer le Backend avec PHP et Laravel
 
-1. **Étape 1 : Planification de l’Architecture de l’API RESTful**
-2. **Étape 2 : Mise en Place des Couches de l’Application**
-3. **Étape 3 : Conception de la Base de Données**
-4. **Étape 4 : Implémentation des Fonctionnalités de l’API**
-5. **Étape 5 : Sécurisation et Gestion des Erreurs**
+  **Étape 1 : Planification de l’Architecture de l’API RESTful**
+  **Étape 2 : Mise en Place des Couches de l’Application**
+  **Étape 3 : Conception de la Base de Données**
+  **Étape 4 : Implémentation des Fonctionnalités de l’API**
+  **Étape 5 : Sécurisation et Gestion des Erreurs**
