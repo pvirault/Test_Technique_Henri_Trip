@@ -121,7 +121,7 @@ Cette API gérera deux types d'utilisateurs avec des droits spécifiques :
 - **Accès des Utilisateurs**  
   Les utilisateurs de type "user" ne peuvent voir que les guides auxquels ils sont explicitement invités.
 
-#### Choix Techniques 
+### Choix Techniques 
 
 L'API sera développée en **PHP** avec le framework **Laravel**.
 
@@ -137,10 +137,49 @@ L'API sera développée en **PHP** avec le framework **Laravel**.
   2. **Simplification des Relations de Données** : Laravel facilite la gestion des relations entre entités dans la base de données.
   3. **Gestion des Middlewares et des Autorisations** : Laravel intègre une gestion efficace des middlewares et des permissions d’accès.
 
-#### Méthodologie pour Structurer le Backend avec PHP et Laravel
+### Méthodologie pour Structurer le Backend avec PHP et Laravel
 
-  **Étape 1 : Planification de l’Architecture de l’API RESTful**
-  **Étape 2 : Mise en Place des Couches de l’Application**
-  **Étape 3 : Conception de la Base de Données**
-  **Étape 4 : Implémentation des Fonctionnalités de l’API**
-  **Étape 5 : Sécurisation et Gestion des Erreurs**
+  - **Étape 1 : Planification de l’Architecture de l’API RESTful**
+  - **Étape 2 : Mise en Place des Couches de l’Application**
+  - **Étape 3 : Conception de la Base de Données**
+  - **Étape 4 : Implémentation des Fonctionnalités de l’API**
+  - **Étape 5 : Sécurisation et Gestion des Erreurs**
+
+### Structure du Projet
+```plaintext
+backend/
+├── app/
+│   ├── Console/                           # Console pour les commandes artisan
+│   ├── Exceptions/                        # Gestion des exceptions globales de l'application
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── ActivityController.php     # Contrôleur pour la gestion des activités au sein des guides
+│   │   │   ├── AuthController.php         # Contrôleur pour l'authentification et l'autorisation des utilisateurs
+│   │   │   ├── GuideController.php        # Contrôleur pour la gestion des guides (CRUD pour les guides)
+│   │   │   ├── UserController.php         # Contrôleur pour la gestion des utilisateurs (CRUD pour les utilisateurs)
+│   │   └── Middleware/
+│   │       ├── CheckAdminRole.php         # Middleware pour vérifier si l'utilisateur est administrateur
+│   │       ├── Authenticate.php           # Middleware pour authentifier les utilisateurs      
+│   ├── Models/
+│   │   ├── Activity.php                   # Modèle Activity lié aux guides
+│   │   ├── Guide.php                      # Modèle Guide avec les attributs requis
+│   │   └── User.php                       # Modèle User pour gérer les rôles (Admin/Utilisateur)
+│   ├── Providers/                        
+│   └── Services/                          # Services personnalisés pour la logique métier complexe
+│       ├── Activity.php
+│       ├── GuideService.php
+│       └── UserService.php
+├── config/                                # Fichiers de configuration de l'application
+├── database/
+│   ├── factories/
+│   ├── migrations/                        # Migrations de base de données pour la configuration du schéma
+│   └── seeders/                           # Seeders pour initialiser la base de données avec des données
+├── resources/
+│   ├── views/                             # Vues (si applicables pour les réponses API)
+├── routes/
+│   ├── api.php                            # Routes API définissant les points d'API
+│   └── web.php                            # Routes Web pour les vues et les pages HTML
+└── tests/
+    ├── Feature/                           # Tests fonctionnels pour tester les points d'API
+    └── Unit/                              # Tests unitaires pour les services et les modèles
+```
