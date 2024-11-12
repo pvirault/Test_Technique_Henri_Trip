@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ use App\Http\Controllers\ActivityController;
 */
 
 
-Route::middleware(['auth:sanctum', 'check.admin'])->group(function () {
+Route::middleware(['api.key'])->group(function () {
 
     // User Routes
     Route::get('/users', [UserController::class, 'index']);            // GET /users
@@ -43,6 +44,6 @@ Route::middleware(['auth:sanctum', 'check.admin'])->group(function () {
     
 });
 
-Route::post('/admin/login', [UserController::class, 'adminLogin'])->name('admin.login');
-Route::post('/login', [UserController::class, 'login'])->name('login');
-Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');

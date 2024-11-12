@@ -5,37 +5,10 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 
-class UserService
+class AuthService
 {
-    public function getAllUsers()
-    {
-        return User::all();
-    }
-
-    public function getUserById($id)
-    {
-        return User::findOrFail($id);
-    }
-
-    public function createUser($data)
-    {
-        return User::create($data);
-    }
-
-    public function updateUser($id, $data)
-    {
-        $user = User::findOrFail($id);
-        $user->update($data);
-        return $user;
-    }
-
-    public function deleteUser($id)
-    {
-        User::destroy($id);
-    }
-
-
     public function login($email, $password)
     {
         $user = User::where('email', $email)->first();
@@ -60,11 +33,13 @@ class UserService
             'email_verified_at' => null,
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $user->api_key = Str::random(60);
+        $user->save();
 
         return [
+            'message' => 'Registration successful',
             'user' => $user,
-            'token' => $token,
+            'api_key' => $user->api_key,
         ];
     }
 

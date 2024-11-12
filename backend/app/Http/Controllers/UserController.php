@@ -81,36 +81,4 @@ class UserController extends Controller
         return response()->json(['message' => 'User deleted successfully']);
     }
 
-    public function adminLogin(Request $request)
-    {
-          $response = $this->userService->adminLogin($request->email, $request->password);
-
-          if (isset($response['error'])) {
-              return response()->json($response, 403);
-          }
-  
-          return response()->json($response);
-    }
-
-    public function login(Request $request)
-    {
-          $response = $this->userService->login($request->email, $request->password);
-
-          if (isset($response['error'])) {
-              return response()->json($response, 403);
-          }
-  
-          return response()->json($response);
-    }
-
-    public function register(Request $request)
-    {
-        try {
-            $result = $this->userService->register($request->all());
-            return response()->json($result, 201);
-        } catch (ValidationException $e) {
-            return response()->json(['errors' => $e->errors()], 422);
-        }
-    }
-
 }
