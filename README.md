@@ -3,7 +3,6 @@
 ## Contexte 
 
 Ce test technique est composé de deux exercices : un exercice pour la partie Frontend et un autre pour la partie Backend.
----
 
 ## Prérequis
 
@@ -17,8 +16,6 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
 - **npm** (gestionnaire de paquets pour Node.js)
 - **Composer** (gestionnaire de dépendances PHP)
 - **Git** (pour cloner le repository)
-
----
 
 ## Installation et Configuration
 
@@ -37,12 +34,12 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
 
   1. **lancez les services Docker** :
 
-   Exécutez la commande suivante dans le terminal à partir du répertoire contenant le fichier docker-compose.yml :
-   ```bash
-   docker-compose up -d
-   ```
+    Exécutez la commande suivante dans le terminal à partir du répertoire contenant le fichier docker-compose.yml :
+    ```bash
+    docker-compose up -d
+    ```
 
-   Cela va créer et démarrer les services suivants :
+    Cela va créer et démarrer les services suivants :
 
   - **MySQL** : La base de données avec les informations de connexion suivantes :
     - **Hôte** : `localhost`
@@ -59,9 +56,11 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
   2. **Arrêter les services Docker** :
 
     Pour arrêter les services, exécutez la commande suivante :
+
     ```bash
     docker-compose down
     ```
+
     Cela arrêtera et supprimera les conteneurs sans supprimer les données de la base de données, qui sont stockées dans un volume persistant (`mysql_data`).
 
   3. **Accéder à la base de données** :
@@ -74,9 +73,11 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
   4. **Réinitialisation de la base de données** :
 
     Si vous souhaitez réinitialiser la base de données, vous pouvez supprimer les volumes Docker associés à MySQL en exécutant :
+    
     ```bash
     docker-compose down -v
     ```
+
     Cela supprimera également le volume de données et réinitialisera la base de données.
 
 ### 3. Configuration du Backend (Laravel)
@@ -84,6 +85,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
   1. **Installation des Dépendances PHP** :
 
   Rendez-vous dans le dossier du projet backend (si nécessaire) et exécutez la commande suivante pour installer les dépendances PHP via Composer :
+
   ```bash
   composer install
   ```
@@ -91,11 +93,14 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
   2. **Configuration du fichier `.env`** :
     
     Copiez le fichier `.env.example` vers `.env` et configurez les paramètres de votre base de données ainsi que les autres variables nécessaires :
+
     ```bash
     cp .env.example .env
     ```
+
     Modifiez les paramètres dans le fichier `.env` selon votre configuration locale (base de données, etc.).
-    ```env
+
+   ```env
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
@@ -107,6 +112,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
   3. **Génération de la Clé de l'Application** :
 
     Exécutez la commande suivante pour générer la clé de votre application Laravel :
+
     ```bash
     php artisan key:generate
     ```
@@ -114,19 +120,24 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
   4. **Création des Tables dans la Base de Données** :
 
     Assurez-vous que votre base de données MySQL est bien configurée, puis appliquez les migrations pour créer les tables nécessaires :
+
     ```bash
     php artisan migrate
     ```
   5. **Chargement des Données (Facultatif)** :
     Utiliser les données de test à charger dans la base de données.
+    
     ```bash
     php artisan db:seed
     ```
+
   6. **Démarrer le Serveur Laravel** :
     Pour démarrer le serveur de développement Laravel, exécutez la commande suivante :
+
     ```bash
     php artisan serve
     ```
+
     Le backend sera accessible à l'adresse `http://127.0.0.1:8000`.
 
 ### 4. Configuration du Frontend (React)
@@ -143,12 +154,12 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
   2. **Démarrer l'Application React** :
 
     Une fois les dépendances installées, démarrez l'application React avec la commande suivante :
+
     ```bash
     npm start
     ```
-    L'application React sera alors accessible à l'adresse `http://localhost:3000`.
 
----
+    L'application React sera alors accessible à l'adresse `http://localhost:3000`.
 
 ## Utilisation de l'API
 
@@ -174,6 +185,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
   2. **Connexion d'un utilisateur** :
 
     Pour se connecter et obtenir un token d'authentification, utilisez le point `POST /login` :
+
     ```javascript
     axios.post('http://127.0.0.1:8000/api/login', {
       email: 'jean@example.com',
@@ -188,6 +200,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
   3. **Utilisation du token dans les requêtes** :
 
     Pour toute requête nécessitant une authentification (par exemple pour obtenir les utilisateurs ou guides), incluez le token dans l'en-tête `Authorization` :
+
     ```javascript
     const token = localStorage.getItem('auth_token');
     axios.get('http://127.0.0.1:8000/api/users', {
@@ -196,7 +209,6 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
     .then(response => console.log(response.data))
     .catch(error => console.error(error));
     ```
----
 
 ## Routes API
 
@@ -228,6 +240,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
 ## Exemple d'Appels API avec Axios (Frontend React)
 
   1. **Inscrire un utilisateur** :
+
     ```javascript
     axios.post('http://127.0.0.1:8000/api/register', {
       name: 'John Doe',
@@ -240,6 +253,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
     ```
   
   2. **Se connecter et obtenir le token** :
+
     ```javascript
     axios.post('http://127.0.0.1:8000/api/login', {
       email: 'john@example.com',
@@ -252,6 +266,7 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
     ```
 
   3. **Consulter les guides (avec authentification)** :
+    
     ```javascript
     const token = localStorage.getItem('auth_token');
     axios.get('http://127.0.0.1:8000/api/guides', {
@@ -260,7 +275,6 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
     .then(response => console.log(response.data))
     .catch(error => console.error(error));
     ```
----
 
 ## Informations supplémentaires
 
