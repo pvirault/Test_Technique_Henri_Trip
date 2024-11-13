@@ -67,11 +67,7 @@ class ActivityService
             throw new ModelNotFoundException("Guide not found.");
         }
 
-        return $guide->activities()->create([
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'duration' => $data['duration'], 
-        ]);
+        return $guide->activities()->create($data); // Mass-assign data based on fillable attributes
     }
 
     /**

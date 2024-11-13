@@ -10,9 +10,12 @@ class UserController extends Controller
 {
     protected $userService;
 
+    /**
+     * Initialize UserServicee instance
+     */
     public function __construct(UserService $userService)
     {
-        $this->userService = $userService;  // Inject the UserService for business logic
+        $this->userService = $userService;
     }
 
     /**

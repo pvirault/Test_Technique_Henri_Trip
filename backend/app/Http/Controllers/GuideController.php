@@ -10,6 +10,9 @@ class GuideController extends Controller
 {
     protected $guideService;
 
+    /**
+     * Initialize GuideService instance
+     */
     public function __construct(GuideService $guideService)
     {
         $this->guideService = $guideService;  // Inject GuideService

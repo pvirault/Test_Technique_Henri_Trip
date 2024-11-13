@@ -22,11 +22,11 @@ class Activity extends Model
         'opening_hours',
         'website',
         'visit_order',
-        'guide_id', // Assuming an activity is linked to a specific guide
+        'guide_id', // The guide associated with this activity
     ];
 
     /**
-     * Get the guide that owns the activity.
+     * Define relationship: an activity belongs to a guide
      */
     public function guide()
     {

@@ -14,10 +14,10 @@ class Guide extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',          // The title of the guide
-        'description',    // A description of the guide
-        'days_count',     // Number of days for the guide
-        'options',        // Options like mobility, season, target audience, etc.
+        'title',
+        'description',
+        'days_count',
+        'options',
         'created_by',
     ];
 
@@ -32,11 +32,11 @@ class Guide extends Model
     }
 
     /**
-     * Get the activities associated with the guide.
+     * Define relationship: a guide can have multiple activities.
      */
     public function activities()
     {
-        return $this->hasMany(Activity::class);  // A guide can have many activities
+        return $this->hasMany(Activity::class);
     }
 
      /**

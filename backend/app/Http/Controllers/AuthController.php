@@ -9,11 +9,17 @@ class AuthController extends Controller
 {
     protected $authService;
 
+    /**
+     * Initialize AuthService instance
+     */
     public function __construct(AuthService $authService)
     {
         $this->authService = $authService;
     }
 
+    /**
+     * Log in user and return auth token on success
+     */
     public function login(Request $request)
     {
           $response = $this->authService->login($request->email, $request->password);
@@ -25,6 +31,9 @@ class AuthController extends Controller
           return response()->json($response);
     }
 
+    /**
+     * Register a new user and return auth data on success
+     */
     public function register(Request $request)
     {
         try {
@@ -35,6 +44,9 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * Log out the user by deleting the current access token
+     */
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();

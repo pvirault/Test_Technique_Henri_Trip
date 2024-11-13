@@ -10,6 +10,9 @@ class ActivityController extends Controller
 {
     protected $activityService;
 
+    /**
+     * Initialize ActivityService instance
+     */
     public function __construct(ActivityService $activityService)
     {
         $this->activityService = $activityService;  // Inject ActivityService

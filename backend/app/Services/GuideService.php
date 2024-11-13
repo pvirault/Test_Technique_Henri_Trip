@@ -47,7 +47,7 @@ class GuideService
             'title' => $data['title'],
             'description' => $data['description'],
             'days_count' => $data['days_count'],
-            'options' => json_encode($data['options'])
+            'options' => json_encode($data['options']) // Encode options as JSON
         ]);
     }
 
@@ -69,10 +69,10 @@ class GuideService
 
         // Update the guide with new data
         $guide->update([
-            'title' => $data['title'] ?? $guide->title,
+            'title' => $data['title'] ?? $guide->title, // Use existing value if not provided
             'description' => $data['description'] ?? $guide->description,
             'days_count' => $data['days_count'] ?? $guide->days_count,
-            'options' => isset($data['options']) ? json_encode($data['options']) : $guide->options,
+            'options' => isset($data['options']) ? json_encode($data['options']) : $guide->options, // Only update options if provided
         ]);
 
         return $guide;
@@ -95,6 +95,12 @@ class GuideService
         $guide->delete();
     }
 
+     /**
+     * Search guides based on provided criteria.
+     *
+     * @param array $criteria
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function searchGuides(array $criteria)
     {
         
