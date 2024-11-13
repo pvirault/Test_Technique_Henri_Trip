@@ -34,6 +34,8 @@ Route::middleware(['api.key'])->group(function () {
     Route::get('/guides/{id}', [GuideController::class, 'show']);        // GET /guides/{id}
     Route::put('/guides/{id}', [GuideController::class, 'update']);      // PUT /guides/{id}
     Route::delete('/guides/{id}', [GuideController::class, 'destroy']);  // DELETE /guides/{id}
+
+    Route::get('/guides/search', [GuideController::class, 'search']);    // SEARCH /guides/search
     
     // Activity Routes (Nested under Guide)
     Route::get('/guides/{guideId}/activities', [ActivityController::class, 'index']);                // GET /guides/{guideId}/activities

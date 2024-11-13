@@ -94,4 +94,21 @@ class GuideService
 
         $guide->delete();
     }
+
+    public function searchGuides(array $criteria)
+    {
+        
+        $query = Guide::query();
+
+        if (isset($criteria['title'])) {
+            $query->where('title', 'like', '%' . $criteria['title'] . '%');
+        }
+        if (isset($criteria['days_count'])) {
+            $query->where('days_count', $criteria['days_count']);
+        }
+        if (isset($criteria['options'])) {
+            $query->where('options', 'like', '%' . $criteria['options'] . '%');
+        }
+        return $query->get();
+    }
 }

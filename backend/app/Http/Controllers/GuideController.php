@@ -73,4 +73,17 @@ class GuideController extends Controller
         $this->guideService->deleteGuide($id);
         return response()->json(['message' => 'Guide deleted successfully']);
     }
+
+     /**
+     * Search a guide by title, days_count, options.
+     */
+     public function search(Request $request)
+     {
+
+         $criteria = $request->only(['title', 'days_count', 'options']);
+ 
+         $guides = $this->guideService->searchGuides($criteria);
+ 
+         return response()->json($guides);
+     }
 }
