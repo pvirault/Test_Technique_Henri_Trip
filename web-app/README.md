@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+## Exercice 1 : Test Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Les utilisateurs ont besoin de consulter et d'interagir avec les guides qu'ils ont créés ou auxquels ils ont été invités. Ce projet consiste en la création d'une web app en React qui permettra aux utilisateurs de visualiser et de naviguer à travers ces guides.
 
-## Available Scripts
+### Objectifs
 
-In the project directory, you can run:
+  - Créer une interface utilisateur intuitive pour afficher et naviguer à travers les guides accessibles par l’utilisateur.
+  - Afficher une liste des guides, avec un accès aux détails de chaque guide, incluant les jours et les activités associées.
+  - Assurer une navigation fluide entre les différentes sections (jours, activités).
+  - Interagir avec notre API pour récupérer les données des guides.
 
-### `npm start`
+### Architecture et Organisation des Composants
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **`App.js`** : Point d’entrée de l’application pour définir le routage global.
+- **Composants principaux** :
+  1. **GuideList** : Affiche la liste des guides.
+  2. **GuideDetail** : Vue détaillée d’un guide, avec ses sections spécifiques.
+  3. **DayView** : Affiche les jours pour un guide spécifique.
+  4. **ActivityView** : Affiche les activités d’un jour donné.
+- Utilisation de **React Router** pour gérer la navigation entre les composants.
+- Utilisation de **Axios** pour consommer l'API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Structure des Données et Consommation de l’API
 
-### `npm test`
+- Prévoir des requêtes pour récupérer la liste des guides et les détails d'un guide avec les activités associées.
+- Gérer les erreurs et le chargement pour assurer une expérience utilisateur fluide.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Organisation du Code
 
-### `npm run build`
+- **`src/components`** : Contient tous les composants réutilisables, tels que `GuideList`, `GuideDetail`, `DayView`, `ActivityView`.
+- **`src/services`** : Centralise les appels API avec Axios.
+- **`src/styles`** : Fichiers CSS pour styliser chaque composant de manière modulaire.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Structure du Projet
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Voici la structure du projet pour organiser efficacement cette application React en respectant les bonnes pratiques :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```plaintext
+web-app/
+├── public/
+│   ├── index.html             # Fichier HTML principal pour injecter l'application React
+│   └── ...                    # Autres fichiers publics
+├── src/
+│   ├── components/            # Composants React individuels
+│   │   ├── GuideList.js       # Composant pour afficher la liste des guides
+│   │   ├── GuideDetail.js     # Composant pour les détails d'un guide spécifique
+│   │   ├── DayView.js         # Composant pour afficher les jours d'un guide
+│   │   └── ActivityView.js    # Composant pour afficher les activités d'un jour
+│   │
+│   ├── pages/                 # Pages principales, chacune pour une vue globale
+│   │   ├── HomePage.js        # Page d'accueil avec la liste des guides
+│   │   └── GuidePage.js       # Page de détails pour un guide
+│   │
+│   ├── services/              # Appels API et gestion des données
+│   │   └── api.js             # Fichier pour les appels API (axios configuration)
+│   │
+│   ├── styles/                # Styles globaux et spécifiques aux composants
+│   │   ├── index.css          # Fichier CSS global
+│   │   ├── GuideList.css      # Styles spécifiques pour la liste des guides
+│   │   ├── GuideDetail.css    # Styles pour les détails du guide
+│   │   └── DayView.css        # Styles pour la vue des jours
+│   │
+│   ├── App.js                 # Point d’entrée principal, définit les routes et structure
+│   ├── index.js               # Point de montage ReactDOM
+│   └── utils/                 
+│       └── helpers.js         
+├── .env                       # Variables d'environnement (API URLs, clés, etc.)
+├── .gitignore                 # Fichiers et dossiers à ignorer par Git
+├── package.json               # Dépendances et scripts du projet
+└── README.md                  # Documentation du projet
+```
