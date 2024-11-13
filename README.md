@@ -36,8 +36,8 @@ Avant de commencer, assurez-vous que vous avez les éléments suivants installé
 
     Exécutez la commande suivante dans le terminal à partir du répertoire contenant le fichier docker-compose.yml :
     ```bash
-    docker-compose up -d
-    ```
+      docker-compose up -d
+    
 
     Cela va créer et démarrer les services suivants :
 
